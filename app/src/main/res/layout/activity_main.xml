@@ -7,12 +7,110 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/border"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:background="#000000"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/rgbText"
+        app:layout_constraintEnd_toEndOf="@+id/rgbText"
+        app:layout_constraintStart_toStartOf="@+id/rgbText"
+        app:layout_constraintTop_toTopOf="@+id/rgbText" />
+
+    <TextView
+        android:id="@+id/rgbText"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
+        android:background="#3F51B5"
+        android:gravity="center"
+        android:text="R\nG\nB"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/extractImage"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rgbText"
+        app:srcCompat="@drawable/color_palette" />
+
+    <Button
+        android:id="@+id/gallery"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="5dp"
+        android:text="Galerie"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/photo"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/toPaintView"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="20dp"
+        android:text="Mode Dessin"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/photo"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="20dp"
+        android:text="Appareil Photo"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/saveToPalette"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="5dp"
+        android:text="Enregistrer dans Palette"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/displayPalette"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/extractImage" />
+
+    <Button
+        android:id="@+id/displayPalette"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="20dp"
+        android:text="Afficher Palette"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Switch
+        android:id="@+id/rbgToHex"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:text="RGB"
+        app:layout_constraintEnd_toStartOf="@+id/border"
+        app:layout_constraintTop_toTopOf="@+id/border" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private Button galleryBtn;
 
     private Switch rgbSwitch;
-
+    private Button PaintBtn;
     private int r, g, b;
 
     @Override
@@ -42,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         textView = (TextView) findViewById(R.id.rgbText);
         galleryBtn = (Button) findViewById(R.id.gallery);
         rgbSwitch = (Switch) findViewById(R.id.rbgToHex);
+        PaintBtn = (Button) findViewById(R.id.toPaintView);
 
         imageView.setDrawingCacheEnabled(true);
         imageView.buildDrawingCache(true);
@@ -82,6 +83,16 @@ public class MainActivity extends AppCompatActivity {
                 launchActivity.launch(intent);
             }
         });
+
+        PaintBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent Paint_intent = new Intent(getApplicationContext(), FingerPath.class);
+                startActivity(Paint_intent);
+            }
+        });
+
+
     }
 
     protected void displayColorCode() {

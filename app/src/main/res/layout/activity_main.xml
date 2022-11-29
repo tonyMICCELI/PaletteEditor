@@ -35,10 +35,11 @@
 
     <ImageView
         android:id="@+id/extractImage"
-        android:layout_width="400dp"
-        android:layout_height="400dp"
-        android:layout_marginTop="25dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rgbText"
         app:srcCompat="@drawable/color_palette" />
@@ -47,7 +48,7 @@
         android:id="@+id/gallery"
         android:layout_width="150dp"
         android:layout_height="60dp"
-        android:layout_marginStart="25dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="25dp"
         android:layout_marginBottom="5dp"
         android:text="Galerie"
@@ -55,7 +56,8 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/photo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/extractImage" />
+        app:layout_constraintTop_toBottomOf="@+id/extractImage"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/toPaintView"
@@ -73,8 +75,8 @@
         android:id="@+id/photo"
         android:layout_width="150dp"
         android:layout_height="60dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="124dp"
         android:text="Appareil Photo"
         android:textAlignment="center"
         android:textStyle="bold"
@@ -86,20 +88,21 @@
         android:layout_width="150dp"
         android:layout_height="60dp"
         android:layout_marginTop="25dp"
-        android:layout_marginEnd="25dp"
+        android:layout_marginEnd="24dp"
         android:layout_marginBottom="5dp"
         android:text="Enregistrer dans Palette"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/displayPalette"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/extractImage" />
+        app:layout_constraintTop_toBottomOf="@+id/extractImage"
+        app:layout_constraintVertical_bias="0.09" />
 
     <Button
         android:id="@+id/displayPalette"
         android:layout_width="150dp"
         android:layout_height="60dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="124dp"
         android:text="Afficher Palette"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -109,10 +112,14 @@
         android:id="@+id/rbgToHex"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="12dp"
         android:text="RGB"
         app:layout_constraintEnd_toStartOf="@+id/border"
         app:layout_constraintTop_toTopOf="@+id/border" />
 
+    <com.example.paletteeditor.PaintView
+        android:id="@+id/paintView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

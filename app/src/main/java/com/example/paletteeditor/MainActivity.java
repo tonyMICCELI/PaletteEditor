@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private Button galleryBtn;
     private Button saveBtn;
     private Button displayPalette;
+    private Button clearBtn;
 
     private Switch rgbSwitch;
 
@@ -43,12 +44,11 @@ public class MainActivity extends AppCompatActivity {
     public static final String SHARED_PREFS_COLOR = "sharedPrefsColor";
     public static final String COLORS_STRING_LIST = "colorList";
 
-    private String testDisplay = "";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         imageView = (ImageView) findViewById(R.id.extractImage);
         textView = (TextView) findViewById(R.id.rgbText);
@@ -56,13 +56,10 @@ public class MainActivity extends AppCompatActivity {
         saveBtn = (Button) findViewById(R.id.saveToPalette);
         displayPalette = (Button) findViewById(R.id.displayPalette);
         rgbSwitch = (Switch) findViewById(R.id.rbgToHex);
+        clearBtn = (Button) findViewById(R.id.clearPalette);
 
         imageView.setDrawingCacheEnabled(true);
         imageView.buildDrawingCache(true);
-
-        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS_COLOR, MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.clear().commit();
 
         imageView.setOnTouchListener((view, motionEvent) -> {
             if(motionEvent.getAction() == MotionEvent.ACTION_DOWN || motionEvent.getAction() == MotionEvent.ACTION_MOVE) {
@@ -113,8 +110,19 @@ public class MainActivity extends AppCompatActivity {
         displayPalette.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), PaletteActivity.class);
-                startActivity(intent);
+                if (colorStringList.length() != 0) {
+                    Intent intent = new Intent(getApplicationContext(), PaletteActivity.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(MainActivity.this, "Palette vide", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        clearBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clearData();
             }
         });
     }
@@ -170,11 +178,16 @@ public class MainActivity extends AppCompatActivity {
     public void saveData() {
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS_COLOR, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-
         editor.putString(COLORS_STRING_LIST, colorStringList);
-
         editor.apply();
-
         Toast.makeText(this, "Couleur sauvegardée", Toast.LENGTH_SHORT).show();
+    }
+
+    public void clearData() {
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS_COLOR, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear().commit();
+        colorStringList = "";
+        Toast.makeText(this, "Palette supprimée", Toast.LENGTH_SHORT).show();
     }
 }
